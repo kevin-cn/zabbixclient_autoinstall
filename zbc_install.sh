@@ -72,12 +72,11 @@ rm zabbix* -rf
 
 conf_zabbix_client(){
 #修改/usr/local/zabbix/etc/zabbix_agentd.conf配置项
-sed -i 's/Server=127.0.0.1/Server=${server_ip}/g' /usr/local/zabbix/etc/zabbix_agentd.conf
-sed -i 's/ServerActive=127.0.0.1/ServerActive=${server_ip}/g' /usr/local/zabbix/etc/zabbix_agentd.conf
-sed -i 's/Hostname=Zabbix server/Hostname=${client_ip}/g' /usr/local/zabbix/etc/zabbix_agentd.conf
+sed -i 's/Server=127.0.0.1/Server='$server_ip'/g' /usr/local/zabbix/etc/zabbix_agentd.conf
+sed -i 's/ServerActive=127.0.0.1/ServerActive='$server_ip'/g' /usr/local/zabbix/etc/zabbix_agentd.conf
+sed -i 's/Hostname=Zabbix server/Hostname='$client_ip'/g' /usr/local/zabbix/etc/zabbix_agentd.conf
 #修改/etc/init.d/zabbix_agentd配置项
-sed -i 'BASEDIR=\/usr\/local/BASEDIR=\/usr\/local\/zabbix/g' /etc/init.d/zabbix_agentd
-
+sed -i 's/BASEDIR=\/usr\/local/BASEDIR=\/usr\/local\/zabbix/g' /etc/init.d/zabbix_agentd
 }
 
 #修改防火墙配置
