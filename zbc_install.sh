@@ -107,8 +107,8 @@ config_firewall() {
 				iptables -L -n | grep -i 10050 > /dev/null 2>&1
 				if [ $? -ne 0 ]; then
 					iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10050 -j ACCEPT
-					/etc/init.d/iptables save
-					/etc/init.d/iptables restart
+					/usr/libexec/iptables/iptables.init save
+					service iptables restart
 				fi
 		   else
 				echo -e "${yellow}Warning:${plain} firewalld looks like not running, try to start..."
