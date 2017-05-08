@@ -101,7 +101,7 @@ config_firewall() {
             firewall-cmd --permanent --zone=public --add-port=10050/tcp
             firewall-cmd --reload
         else
-		   /etc/init.d/iptables status > /dev/null 2>&1
+		   systemctl status iptables > /dev/null 2>&1
 		   if [ $? -eq 0 ]; then
 				iptables -L -n | grep -i 10050 > /dev/null 2>&1
 				if [ $? -ne 0 ]; then
@@ -126,7 +126,7 @@ config_firewall() {
 show_end(){
 echo -e "========================================================================"
 echo -e "=                zabbix_clent 安装完毕,已启动                          ="
-echo -e "=           前往$server_ip服务器配置本节点开始监控吧                   ="
+echo -e "=           前往$server_ip服务器配置本节点开始监控吧              ="
 echo -e "=                                                                      ="
 echo -e "========================================================================"
 }
@@ -150,6 +150,7 @@ echo -e "===========================================================
      ${plain}zabbix client IP  : ${yellow}${client_ip}      
 ${plain}==========================================================="
 echo "按任意键开始安装 Ctrl+C 取消"
+char=`get_char`	
 
 install_zabbix_client
 conf_zabbix_client
