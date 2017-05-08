@@ -117,7 +117,7 @@ config_firewall() {
 					firewall-cmd --permanent --zone=public --add-port=10050/tcp
 					firewall-cmd --reload
 				else
-					echo -e "${yellow}Warning:${plain} Start firewalld failed, please enable port ${shadowsocksport} manually if necessary."
+					echo -e "${yellow}Warning:${plain} Start firewalld failed, please enable port 10050 manually if necessary."
 				fi
 		   fi
         fi
