@@ -57,9 +57,9 @@ echo -e "${plain}============================================================"
 yum install -y gcc-c++ epel-release zip unzip screen
 #安装rar
 cd /tmp
-wget https://fossies.org/linux/misc/zabbix-3.2.4.tar.gz
-tar zxf zabbix-3.2.4.tar.gz
-cd zabbix-3.2.4
+wget https://fossies.org/linux/misc/zabbix-3.2.6.tar.gz
+tar zxf zabbix-3.2.6.tar.gz
+cd zabbix-3.2.6
 ./configure --prefix=/usr/local/zabbix --enable-agent
 make && make install
 cp misc/init.d/fedora/core/zabbix_agentd /etc/init.d
